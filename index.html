@@ -1,0 +1,491 @@
+<!DOCTYPE <html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TANF Transportes — Transporte de Colaboradores</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --red: #C4151C;
+  --red-dark: #9B1117;
+  --blue: #1B3A8C;
+  --blue-light: #2A4FAF;
+  --dark: #111111;
+  --white: #FFFFFF;
+  --gray-50: #F7F8FA;
+  --gray-100: #EBEDF2;
+  --gray-200: #D1D5DE;
+  --gray-500: #6B7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: #e0e4ec;
+  background: #1B2A4A;
+  line-height: 1.6;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: #1B2A4A;
+  border-bottom: none;
+  padding: 0 40px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo img { height: 170px; width: 300px; object-fit: contain; }
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+
+.nav-links a {
+  text-decoration: none;
+  color: #e0e4ec;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-links .btn-nav {
+  background: var(--red);
+  color: var(--white);
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.nav-links .btn-nav:hover { color: var(--white); background: var(--red-dark); }
+
+/* HERO */
+.hero {
+  margin-top: 180px;
+  padding: 100px 40px 80px;
+  background: #1F3052;
+  text-align: center;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.hero h1 span { color: var(--red); }
+
+.hero p {
+  font-size: 18px;
+  color: #a8b4c8;
+  max-width: 600px;
+  margin: 0 auto 36px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--red);
+  color: var(--white);
+  padding: 14px 36px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover { background: var(--red-dark); }
+
+/* SECTION UTIL */
+.section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.section-sub {
+  font-size: 16px;
+  color: #a8b4c8;
+  margin-bottom: 48px;
+  max-width: 640px;
+}
+
+/* POR QUE NOS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.card {
+  border: 2px solid #3a5070;
+  border-radius: 10px;
+  padding: 32px 24px;
+  text-align: center;
+  background: #223557;
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #a8b4c8;
+  line-height: 1.6;
+}
+
+/* CLIENTES */
+.clientes-bg { background: #1B2A4A; }
+
+.clientes-grid {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.clientes-grid img {
+  height: 100px;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+/* FROTA */
+.frota-bg { background: #1F3052; }
+
+.frota-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.frota-card {
+  text-align: center;
+}
+
+.frota-img {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.frota-img img {
+  width: 75%;
+  border-radius: 12px;
+  background: #1F3052;
+  display: block;
+  margin: 0 auto;
+}
+
+.frota-card h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.frota-card p {
+  font-size: 15px;
+  color: #a8b4c8;
+  margin-bottom: 12px;
+  line-height: 1.7;
+}
+
+.frota-specs {
+  display: flex;
+  gap: 32px;
+  margin-top: 24px;
+  justify-content: center;
+}
+
+.spec {
+  text-align: center;
+}
+
+.spec strong {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: var(--red);
+}
+
+.spec span {
+  font-size: 13px;
+  color: #a8b4c8;
+  font-weight: 500;
+}
+
+/* ORCAMENTO */
+.orcamento-bg { background: #1B2A4A; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 720px;
+}
+
+.form-grid .full { grid-column: 1 / -1; }
+
+.form-grid label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #c8d0de;
+  margin-bottom: 6px;
+}
+
+.form-grid input,
+.form-grid textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #3a5070;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 15px;
+  background: #223557;
+  color: #e0e4ec;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-grid input:focus,
+.form-grid textarea:focus {
+  border-color: #5a7aaa;
+}
+
+.form-grid input::placeholder,
+.form-grid textarea::placeholder {
+  color: #6b7fa0;
+}
+
+.form-grid textarea { resize: vertical; min-height: 120px; }
+
+/* DIVIDER */
+.divider {
+  height: 6px;
+  background: var(--red);
+  border: none;
+  margin: 0;
+}
+
+/* FOOTER */
+.footer {
+  background: #1B2A4A;
+  border-top: none;
+  padding: 28px 48px;
+  text-align: right;
+}
+
+.footer-right {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.footer-right img { height: 110px; background: #1B2A4A; }
+
+.footer-right p {
+  font-size: 16px;
+  margin: 0;
+  color: #e0e4ec;
+  font-weight: 600;
+}
+
+.footer-right a { color: #e0e4ec; text-decoration: none; }
+.footer-right a:hover { color: var(--white); }
+
+.footer-copy {
+  font-size: 12px;
+  color: #8899b3;
+}
+
+.footer-cnpj {
+  font-size: 13px;
+  color: #8899b3;
+  margin-bottom: 4px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+  .frota-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .hero h1 { font-size: 40px; }
+}
+
+@media (max-width: 600px) {
+  .nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .nav-links a:not(.btn-nav) { display: none; }
+  .hero { padding: 80px 20px 60px; }
+  .hero h1 { font-size: 32px; }
+  .section { padding: 60px 20px; }
+  .cards { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .frota-specs { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="logo-tanf.png" alt="TANF Transportes">
+  </div>
+  <div class="nav-links">
+    <a href="#sobre">Sobre</a>
+    <a href="#frota">Frota</a>
+    <a href="#clientes">Clientes</a>
+    <a href="#orcamento">Orçamento</a>
+    <a href="#orcamento" class="btn-nav">Solicitar orçamento</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Transporte de <span>colaboradores</span> com pontualidade e segurança</h1>
+  <p>Há mais de 10 anos levando equipes ao trabalho com conforto, compromisso e a confiança que sua operação exige.</p>
+  <a href="#orcamento" class="btn-primary">Solicitar orçamento</a>
+</section>
+
+<hr class="divider">
+
+<!-- POR QUE NOS -->
+<section class="section" id="sobre">
+  <h2 class="section-title">Por que escolher a TANF?</h2>
+  <p class="section-sub">Cuidamos de cada detalhe para que os colaboradores da sua empresa cheguem bem, no horário e prontos para produzir.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Pontualidade</h3>
+      <p>Rotas planejadas e motoristas comprometidos com os horários da sua operação.</p>
+    </div>
+    <div class="card">
+      <h3>Segurança</h3>
+      <p>Veículos revisados, motoristas habilitados e seguro total para todos os passageiros.</p>
+    </div>
+    <div class="card">
+      <h3>Conforto</h3>
+      <p>Frota com ar-condicionado e bancos confortáveis para o trajeto do dia a dia.</p>
+    </div>
+    <div class="card">
+      <h3>Flexibilidade</h3>
+      <p>Rotas e horários adaptados à demanda da sua empresa, sem burocracia.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FROTA -->
+<section class="frota-bg" id="frota">
+  <div class="section">
+    <h2 class="section-title">Nossa frota</h2>
+    <p class="section-sub">Veículos para cada necessidade — do transporte diário de pequenas equipes até operações com maior volume de colaboradores.</p>
+
+    <div class="frota-grid">
+      <div class="frota-card">
+        <div class="frota-img">
+          <img src="doblo-v2.png" alt="Van de 6 lugares">
+        </div>
+        <h3>Van de 6 lugares</h3>
+        <p>Minivan compacta e robusta, ideal para equipes menores e trajetos urbanos. Ar-condicionado, cintos individuais e manutenção preventiva rigorosa.</p>
+      </div>
+
+      <div class="frota-card">
+        <div class="frota-img">
+          <img src="sprinter.png" alt="Van de 15 lugares">
+        </div>
+        <h3>Van de 15 lugares</h3>
+        <p>Van espaçosa e confortável para operações com maior demanda. Capacidade para 15 colaboradores com todo o conforto e segurança.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CLIENTES -->
+<section class="clientes-bg" id="clientes">
+  <div class="section">
+    <h2 class="section-title">Principais clientes</h2>
+    <div class="clientes-grid">
+      <img src="cliente-muves.jpg" alt="MuVes Transportes e Turismo">
+      <img src="cliente-solven.png" alt="Solven">
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ORCAMENTO -->
+<section class="orcamento-bg" id="orcamento">
+  <div class="section">
+    <h2 class="section-title">Solicitar orçamento</h2>
+    <p class="section-sub">Preencha o formulário abaixo e retornamos em até 24 horas com uma proposta sob medida.</p>
+
+    <div class="form-grid">
+      <div>
+        <label>Seu nome</label>
+        <input type="text" placeholder="Nome completo">
+      </div>
+      <div>
+        <label>Empresa</label>
+        <input type="text" placeholder="Nome da empresa">
+      </div>
+      <div>
+        <label>E-mail</label>
+        <input type="email" placeholder="seuemail@empresa.com">
+      </div>
+      <div>
+        <label>Telefone / Celular</label>
+        <input type="tel" placeholder="(71) 9 0000-0000">
+      </div>
+      <div class="full">
+        <label>O que você precisa?</label>
+        <textarea placeholder="Descreva a quantidade de colaboradores, turnos, rotas ou qualquer detalhe relevante."></textarea>
+      </div>
+      <div class="full">
+        <button class="btn-primary" type="button">Enviar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-right">
+    <img src="logo-tanf.png" alt="TANF Transportes">
+    <p class="footer-cnpj">CNPJ: 30.463.506/0001-06</p>
+    <p>Telefone: <a href="tel:+5571982457658">(71) 98245-7658</a></p>
+    <p>@ <a href="mailto:tanftransportes@gmail.com">tanftransportes@gmail.com</a></p>
+    <p class="footer-copy">Todos os direitos reservados | 2026</p>
+  </div>
+</footer>
+</body>
+</html>
