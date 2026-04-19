@@ -1,4 +1,5 @@
-<!DOCTYPE <html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -447,31 +448,33 @@ body {
     <h2 class="section-title">Solicitar orçamento</h2>
     <p class="section-sub">Preencha o formulário abaixo e retornamos em até 24 horas com uma proposta sob medida.</p>
 
-    <div class="form-grid">
+    <form action="https://api.web3forms.com/submit" method="POST" class="form-grid">
+      <input type="hidden" name="access_key" value="adc00d49-d723-4b2b-949f-fee019171933">
+      <input type="hidden" name="subject" value="Novo orçamento - TANF Transportes">
       <div>
         <label>Seu nome</label>
-        <input type="text" placeholder="Nome completo">
+        <input type="text" name="name" placeholder="Nome completo" required>
       </div>
       <div>
         <label>Empresa</label>
-        <input type="text" placeholder="Nome da empresa">
+        <input type="text" name="empresa" placeholder="Nome da empresa">
       </div>
       <div>
         <label>E-mail</label>
-        <input type="email" placeholder="seuemail@empresa.com">
+        <input type="email" name="email" placeholder="seuemail@empresa.com" required>
       </div>
       <div>
         <label>Telefone / Celular</label>
-        <input type="tel" placeholder="(71) 9 0000-0000">
+        <input type="tel" name="telefone" placeholder="(71) 9 0000-0000" required>
       </div>
       <div class="full">
         <label>O que você precisa?</label>
-        <textarea placeholder="Descreva a quantidade de colaboradores, turnos, rotas ou qualquer detalhe relevante."></textarea>
+        <textarea name="message" placeholder="Descreva a quantidade de colaboradores, turnos, rotas ou qualquer detalhe relevante." required></textarea>
       </div>
       <div class="full">
-        <button class="btn-primary" type="button">Enviar</button>
+        <button class="btn-primary" type="submit">Enviar</button>
       </div>
-    </div>
+    </form>
   </div>
 </section>
 
